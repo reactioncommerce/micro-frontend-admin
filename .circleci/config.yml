@@ -17,18 +17,18 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - admin-products-v1-node-modules-{{ checksum "package-lock.json" }}-{{ checksum "package/package-lock.json" }}
-            - admin-products-v1-node-modules-{{ .Branch }}
+            - admin-v1-node-modules-{{ checksum "package-lock.json" }}-{{ checksum "package/package-lock.json" }}
+            - admin-v1-node-modules-{{ .Branch }}
       - run:
           name: Install NPM dependencies
           command: npm ci && (cd package && npm ci)
       - save_cache:
-          key: admin-products-v1-node-modules-{{ checksum "package-lock.json" }}-{{ checksum "package/package-lock.json" }}
+          key: admin-v1-node-modules-{{ checksum "package-lock.json" }}-{{ checksum "package/package-lock.json" }}
           paths:
             - node_modules
             - package/node_modules
       - save_cache:
-          key: admin-products-v1-node-modules-{{ .Branch }}
+          key: admin-v1-node-modules-{{ .Branch }}
           paths:
             - node_modules
             - package/node_modules
@@ -40,8 +40,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - admin-products-v1-node-modules-{{ checksum "package-lock.json" }}-{{ checksum "package/package-lock.json" }}
-            - admin-products-v1-node-modules-{{ .Branch }}
+            - admin-v1-node-modules-{{ checksum "package-lock.json" }}-{{ checksum "package/package-lock.json" }}
+            - admin-v1-node-modules-{{ .Branch }}
       - run:
           name: Lint JavaScript
           command: npm run lint
@@ -53,8 +53,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - admin-products-v1-node-modules-{{ checksum "package-lock.json" }}-{{ checksum "package/package-lock.json" }}
-            - admin-products-v1-node-modules-{{ .Branch }}
+            - admin-v1-node-modules-{{ checksum "package-lock.json" }}-{{ checksum "package/package-lock.json" }}
+            - admin-v1-node-modules-{{ .Branch }}
       - run:
           name: Run Unit Tests
           command: npm run test
