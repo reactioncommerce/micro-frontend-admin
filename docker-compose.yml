@@ -1,0 +1,16 @@
+# This docker-compose file is used to run the project in Docker for development.
+# This project produces a npm package and is not meant to be runnable in production mode.
+
+version: '3.4'
+
+services:
+  admin-core:
+    image: reactioncommerce/node-dev:12.14.1-v1
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/usr/local/src/app
+      - node-modules:/usr/local/src/app/node_modules # do not link node_modules in, and persist it between dc up runs
+
+volumes:
+  node-modules:
